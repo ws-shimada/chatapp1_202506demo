@@ -148,6 +148,7 @@ def chat_page():
                 st.rerun()
     elif st.session_state.talktime == 5:
         url = "https://nagoyapsychology.qualtrics.com/jfe/form/SV_0qZJiOa936eRiTA"
+        '''
         st.markdown(
             f"""
             会話が規定回数に達しました。\n\n
@@ -156,6 +157,12 @@ def chat_page():
             <a href="{url}" target="_blank">アンケートに戻る</a>
             """,
             unsafe_allow_html=True)
+            '''
+        st.markdown(
+            f"""
+            会話が規定回数に達しました。
+            """
+        )
 
 def main():
     hide_streamlit_style = """
