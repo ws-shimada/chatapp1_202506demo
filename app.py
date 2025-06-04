@@ -27,7 +27,9 @@ import json
 import tiktoken
 
 # プロンプト
-prompt_list = ["preprompt_affirmative_individualizing_nuclear.txt", "preprompt_negative_binding_nuclear.txt"]
+prompt_list = ["indi", "bind"]
+prompt_dict = {"indi":"preprompt_affirmative_individualizing_nuclear.txt",
+               "bind":"preprompt_negative_binding_nuclear.txt"}
 # モデル
 model_list = ["gpt-4-1106-preview", "gpt-4o", "gpt-4o-mini"]
 # 待機時間
@@ -52,7 +54,7 @@ def input_id():
             label="送信",
             type="primary")
     if submit_id:
-        with open(prompt_option, 'r', encoding='utf-8') as f:
+        with open(prompt_dict[prompt_option], 'r', encoding='utf-8') as f:
             st.session_state.systemprompt = f.read()
         st.session_state.model = model_list[0]
         st.session_state.user_id = str(user_id)
