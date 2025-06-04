@@ -48,8 +48,15 @@ def input_id():
         submit_id = st.form_submit_button(
             label="送信",
             type="primary")
+        prompt_option = st.selectbox(
+            "プロンプト選択※テスト用フォーム",
+            ("{}".format(prompt_list[0]), "{}".format(prompt_list[1])),)
+        user_id = st.text_input('学籍番号を入力し、送信ボタンを押してください')
+        submit_id = st.form_submit_button(
+            label="送信",
+            type="primary")
     if submit_id:
-        with open(prompt_list[0], 'r', encoding='utf-8') as f:
+        with open(prompt_option, 'r', encoding='utf-8') as f:
             st.session_state.systemprompt = f.read()
         st.session_state.model = model_list[0]
         st.session_state.user_id = str(user_id)
