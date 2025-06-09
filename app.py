@@ -45,11 +45,13 @@ if not "memory" in st.session_state:
 def input_id():
     if not "user_id" in st.session_state:
         st.session_state.user_id = "hogehoge"
+    st.title("AIチャットボット：チャットデモ")
+    st.markdown("チャットボットのデモです。ボットを選んでください。")
     with st.form("id_form", enter_to_submit=False):
         prompt_option = st.selectbox(
             "プロンプト選択　※デモ用フォーム",
             ("{}".format(prompt_list[0]), "{}".format(prompt_list[1])),)
-        user_id = st.text_input('学籍番号を入力し、送信ボタンを押してください　※適当な文字列を入れてください', key="user_id_input")
+        user_id = st.text_input('学籍番号を入力し、送信ボタンを押してください。　※適当な文字列を入れてください。', key="user_id_input")
         submit_id = st.form_submit_button(
             label="送信",
             type="primary")
