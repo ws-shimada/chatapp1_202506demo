@@ -57,6 +57,7 @@ def input_id():
         with open(prompt_dict[prompt_option], 'r', encoding='utf-8') as f:
             st.session_state.systemprompt = f.read()
         st.session_state.model = model_list[0]
+        st.session_state.bottype = prompt_option
         st.session_state.user_id = str(user_id)
         st.session_state.state = 2
         st.rerun()
@@ -111,6 +112,7 @@ def click_to_submit():
         st.session_state.return_time = str(datetime.datetime.now(pytz.timezone('Asia/Tokyo')))
         doc_ref = db.collection(str(st.session_state.user_id)).document(str(st.session_state.talktime))
         doc_ref.set({
+            "condition": st.session_state.bottype,
             "Human": st.session_state.user_input,
             "AI": st.session_state.response,
             "Human_msg_sent": st.session_state.send_time,
